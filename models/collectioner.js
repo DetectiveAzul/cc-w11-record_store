@@ -23,9 +23,9 @@ Collectioner.prototype.removeRecord = function (record) {
   };
 };
 
-Collectioner.prototype.hasTheRecord = function (recordName) {
+Collectioner.prototype.hasTheRecord = function (recordTitle) {
   return this.records.some( (record) => {
-    return record.name === recordName;
+    return record.title === recordTitle;
   })
 };
 
@@ -35,6 +35,16 @@ Collectioner.prototype.findRecordByTitle = function (recordTitle) {
     if (record.title === recordTitle) foundRecord = record;
   }
   return foundRecord;
+}
+
+Collectioner.prototype.sellRecord = function (recordTitle) {
+  let recordToSell = null;
+  if (this.hasTheRecord(recordTitle)) {
+    recordToSell = this.findRecordByTitle(recordTitle);
+    this.addFunds(recordToSell.price);
+    this.removeRecord(recordToSell)
+  }
+  return recordToSell;
 }
 
 module.exports = Collectioner;

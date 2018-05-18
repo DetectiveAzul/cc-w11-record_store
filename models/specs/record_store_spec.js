@@ -53,6 +53,15 @@ describe('Store', function () {
     assert.deepStrictEqual(actual, record01);
     assert.strictEqual(length, 1);
   });
-  it('should be able to sell a record if it has the record');
+  it('should be able to sell a record if it has the record', function() {
+    store.addRecord(record01);
+    store.addRecord(record02);
+    const actual = store.sellRecord('Glamazon');
+    const length = store.records.length;
+    const funds = store.funds;
+    assert.deepStrictEqual(actual, record02);
+    assert.strictEqual(length, 1);
+    assert.strictEqual(funds, 15);
+  });
 
 });
