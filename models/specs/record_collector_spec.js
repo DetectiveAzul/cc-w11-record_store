@@ -62,6 +62,15 @@ describe('Collector', function () {
     assert.deepStrictEqual(actual, record02);
   });
   it('should be able to buy a record if it has enough funds');
-  it('should be able to sell a record if it has the record');
+  it('should be able to sell a record if it has the record', function() {
+    collector.addRecord(record01);
+    collector.addRecord(record02);
+    const actual = collector.sellRecord('Glamazon');
+    const length = collector.records.length;
+    const funds = collector.funds;
+    assert.deepStrictEqual(actual, record02);
+    assert.strictEqual(length, 1);
+    assert.strictEqual(funds, 15);
+  });
 
 });
