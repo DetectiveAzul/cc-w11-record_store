@@ -27,7 +27,7 @@ describe('Collector', function () {
     const actual = collector.funds;
     assert.strictEqual(actual, 0);
   });
-  
+
   it('should be able to add funds', function() {
     collector.addFunds(10);
     const actual = collector.funds;
@@ -83,7 +83,7 @@ describe('Collector', function () {
   it('should be able to sell a record if it has the record', function() {
     collector.addRecord(record01);
     collector.addRecord(record02);
-    const actual = collector.sellRecord('Glamazon');
+    const actual = collector.sellRecord(record02);
     const length = collector.records.length;
     const funds = collector.funds;
     assert.deepStrictEqual(actual, record02);

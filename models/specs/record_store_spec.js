@@ -56,7 +56,7 @@ describe('Store', function () {
   it('should be able to sell a record if it has the record', function() {
     store.addRecord(record01);
     store.addRecord(record02);
-    const actual = store.sellRecord('Glamazon');
+    const actual = store.sellRecord(record02);
     const length = store.records.length;
     const funds = store.funds;
     assert.deepStrictEqual(actual, record02);

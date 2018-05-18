@@ -58,4 +58,12 @@ Collectioner.prototype.sellRecord = function (recordTitle) {
   return recordToSell;
 }
 
+Collectioner.prototype.sellRecord = function (record) {
+  if (this.hasTheRecord(record.title)) {
+    this.addFunds(record.price);
+    this.removeRecord(record)
+  }
+  return record;
+}
+
 module.exports = Collectioner;
