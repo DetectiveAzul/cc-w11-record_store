@@ -54,7 +54,13 @@ describe('Collector', function () {
     const actual = collector.findRecordByTitle('Glamazon');
     assert.deepStrictEqual(actual, record02);
   });
-  it('should be able to remove a record from it\'s collection');
+  it('should be able to remove a record from it\'s collection', function() {
+    collector.addRecord(record01);
+    collector.addRecord(record02);
+    collector.removeRecord(record01);
+    const actual = collector.records[0];
+    assert.deepStrictEqual(actual, record02);
+  });
   it('should be able to buy a record if it has enough funds');
   it('should be able to sell a record if it has the record');
 
