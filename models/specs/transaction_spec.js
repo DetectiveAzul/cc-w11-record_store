@@ -1,5 +1,9 @@
 const assert = require('assert');
-const RecordCollector = require('../transaction.js');
+const Transaction = require('../transaction.js');
+const Record = require('../record.js');
+const Collector = require('../record_collector.js');
+const Store = require('../record_store.js');
+
 
 describe('Transaction', function () {
   let transaction;

@@ -27,6 +27,7 @@ describe('Collector', function () {
     const actual = collector.funds;
     assert.strictEqual(actual, 0);
   });
+  
   it('should be able to add funds', function() {
     collector.addFunds(10);
     const actual = collector.funds;
@@ -38,22 +39,26 @@ describe('Collector', function () {
     collector.removeFunds(20);
     const actual = collector.funds;
     assert.strictEqual(actual, 30);
-  })
+  });
+
   it('should start with an empty collection of records', function() {
     const actual = collector.records;
     assert.deepStrictEqual(actual, []);
   });
+
   it('should be able to add a record to it\'s collection', function() {
     collector.addRecord(record01);
     const actual = collector.records[0];
     assert.deepStrictEqual(actual, record01);
   });
+
   it('should be able to find a record by title', function() {
     collector.addRecord(record01);
     collector.addRecord(record02);
     const actual = collector.findRecordByTitle('Glamazon');
     assert.deepStrictEqual(actual, record02);
   });
+
   it('should be able to remove a record from it\'s collection', function() {
     collector.addRecord(record01);
     collector.addRecord(record02);
@@ -61,7 +66,20 @@ describe('Collector', function () {
     const actual = collector.records[0];
     assert.deepStrictEqual(actual, record02);
   });
-  it('should be able to buy a record if it has enough funds');
+
+  it('should be able to buy a record if it has enough funds', function() {
+    collector.addFunds(100);
+    collector.buyRecord(record01);
+    const actual = collector.records.length;
+    assert.strictEqual(actual, 1);
+  });
+
+  it('should not be able to buy a record if it has not enough funds', function() {
+    collector.buyRecord(record01);
+    const actual = collector.records.length;
+    assert.strictEqual(actual, 0);
+  });
+
   it('should be able to sell a record if it has the record', function() {
     collector.addRecord(record01);
     collector.addRecord(record02);

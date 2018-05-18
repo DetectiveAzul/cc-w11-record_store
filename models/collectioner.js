@@ -37,6 +37,17 @@ Collectioner.prototype.findRecordByTitle = function (recordTitle) {
   return foundRecord;
 }
 
+Collectioner.prototype.hasEnoughFunds = function (price) {
+  return this.funds >= price;
+};
+
+Collectioner.prototype.buyRecord = function (record) {
+  if (this.hasEnoughFunds(record.price)) {
+    this.addRecord(record);
+    this.removeFunds(record.price);
+  }
+};
+
 Collectioner.prototype.sellRecord = function (recordTitle) {
   let recordToSell = null;
   if (this.hasTheRecord(recordTitle)) {
