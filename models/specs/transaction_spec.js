@@ -27,21 +27,37 @@ describe('Transaction', function () {
     const actual = transaction.buyer;
     assert.deepStrictEqual(actual, collector);
   });
+
   it('should have a seller', function() {
     const actual = transaction.seller;
     assert.deepStrictEqual(actual, store);
   });
-  it('should be able to check if the seller has the record', function() {
+
+  it('should be able to check if the seller does not have the record', function() {
     const actual = transaction.hasTheRecord();
     assert.deepStrictEqual(actual, false);
   });
 
+  it('should be able to check if the seller has the record', function() {
+    transaction.seller.addRecord(record);
+    const actual = transaction.hasTheRecord();
+    assert.deepStrictEqual(actual, true);
+  });
+
+  it('should be able to check if buyer does not have enough funds', function() {
+    transaction.seller.addRecord(record);
+    transaction.buyer.addFunds(5);
+    const actual = transaction.hasEnoughFunds();
+    assert.strictEqual(actual, false);
+  });
   it('should be able to check if buyer has enough funds', function() {
     transaction.seller.addRecord(record);
     transaction.buyer.addFunds(100);
     const actual = transaction.hasEnoughFunds();
     assert.strictEqual(actual, true);
-  })
+  });
+
+
   it('should be able to handle an exchange of a record when the seller has the' +
   'record and the buyer has enough funds', function() {
     collector.addFunds(100);
