@@ -66,4 +66,10 @@ Collectioner.prototype.sellRecord = function (record) {
   return record;
 }
 
+Collectioner.prototype.findRecordsBy = function (property, value) {
+  return this.records.filter((record) => {
+    return (record[property] === value);
+  });
+};
+
 module.exports = Collectioner;

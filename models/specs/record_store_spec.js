@@ -21,6 +21,12 @@ describe('Store', function () {
       genre: 'Pop',
       price: 15
     });
+    record03 = new Record({
+      title: 'Highway to Hell',
+      artist: 'AC-DC',
+      genre: 'rock',
+      price: 15
+    });
   });
 
   it('should have a name', function() {
@@ -63,5 +69,16 @@ describe('Store', function () {
     assert.strictEqual(length, 1);
     assert.strictEqual(funds, 15);
   });
+  it('should be able to find records matching an specific property', function() {
+    store.addRecord(record01);
+    store.addRecord(record02);
+    store.addRecord(record03);
+    const actual = store.findRecordsBy('genre', 'rock').length;
+    const actual2 = store.findRecordsBy('price', 15).length;
+    const actual3 = store.findRecordsBy('title', 'Glamazon').length;
+    assert.strictEqual(actual, 2);
+    assert.strictEqual(actual2, 2);
+    assert.strictEqual(actual3, 1);
+  })
 
 });
