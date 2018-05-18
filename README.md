@@ -18,6 +18,7 @@ A record collector:
 
 - should start with no funds
 - should be able to add funds
+- should be able to remove funds
 - should start with an empty collection of records
 - should be able to add a record to it's collection
 - should be able to find a record by title
@@ -32,6 +33,7 @@ A record store:
 - should be able to add funds
 - should start with an empty collection of records
 - should be able to add a record to its stock
+- should be able to remove a record from its stock
 - should be able to sell a record if it has the record
 
 A transaction:
